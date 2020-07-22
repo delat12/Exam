@@ -3,14 +3,18 @@ package it.enaip.cinema;
 public class Spettatore {
 // idSpettatore, nome, cognome, data nascita e biglietto 
 	private String nome, cognome;
-	private int biglietto, anno;
+	private int biglietto, età;
+	public static Spettatore instance;
 	
-	public Spettatore(String nome, String cognome, int biglietto, int anno) {
-		super();
+	private Spettatore(String nome, String cognome, int biglietto, int età) {
+		
 		this.nome = nome;
 		this.cognome = cognome;
 		this.biglietto = biglietto;
-		this.anno = anno;
+		this.età = età;
+	}
+	private Spettatore() {
+		
 	}
 	public String getNome() {
 		return nome;
@@ -30,16 +34,22 @@ public class Spettatore {
 	public void setBiglietto(int biglietto) {
 		this.biglietto = biglietto;
 	}
-	public int getAnno() {
-		return anno;
+	public int getEtà() {
+		return età;
 	}
-	public void setAnno(int anno) {
-		this.anno = anno;
+	public void setEtà(int età) {
+		this.età = età;
+	}
+	
+	public static Spettatore getInstance() {
+		if(instance==null) {
+		instance = new Spettatore();
+	}
+	return instance;
 	}
 	@Override
 	public String toString() {
-		return "Spettatore [nome=" + nome + ", cognome=" + cognome + ", biglietto=" + biglietto + ", anno=" + anno
-				+ "]";
+		return "Spettatore [nome=" + nome + ", cognome=" + cognome + ", biglietto=" + biglietto + ", età=" + età + "]";
 	}
 	
 }
